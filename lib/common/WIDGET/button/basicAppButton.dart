@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:spotify_like/presentation/chose_mode/pages/choose_mode.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // ✅ import screen util
 
 class Basicappbutton extends StatelessWidget {
   final String btnText;
+  final Color btnTextColor;
   final String btnFontFamily;
-  final FontWeight btnFontWeight; // ✅ Use correct type
+  final FontWeight btnFontWeight;
   final double btnFontSize;
   final void Function()? onPressed;
   final Color btnColor;
@@ -21,6 +22,7 @@ class Basicappbutton extends StatelessWidget {
     this.btnHeight = 92,
     this.btnWidth = 329,
     this.onPressed,
+    this.btnTextColor = const Color(0xFFFFFFFF),
   });
 
   @override
@@ -28,17 +30,21 @@ class Basicappbutton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        minimumSize: Size(btnWidth, btnHeight),
+        minimumSize: Size(btnWidth.w, btnHeight.h), // ✅ responsive size
         backgroundColor: btnColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            30.r,
+          ), // optional: responsive radius
+        ),
       ),
       child: Text(
         btnText,
         textAlign: TextAlign.center,
         style: TextStyle(
-          fontSize: btnFontSize,
-          fontWeight: btnFontWeight, // ✅ Fixed
-          color: Colors.white,
+          fontSize: btnFontSize.sp, // ✅ responsive font size
+          fontWeight: btnFontWeight,
+          color: btnTextColor,
           fontFamily: btnFontFamily,
         ),
       ),

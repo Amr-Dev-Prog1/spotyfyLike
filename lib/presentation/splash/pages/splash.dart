@@ -1,6 +1,6 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'package:spotify_like/common/hleper/is_dark_mode.dart';
+import 'package:spotify_like/core/configs/theme/app_Color.dart';
 import 'package:spotify_like/core/configs/theme/asset/app_png.dart';
 import 'package:spotify_like/presentation/get_started/pages/get_started.dart';
 
@@ -21,6 +21,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.isDarkModeEnabled
+          ? AppColor.darkBackground
+          : AppColor.lightBackground,
       body: Center(child: Image.asset(AppPng.logo, width: 196, height: 59)),
     );
   }
