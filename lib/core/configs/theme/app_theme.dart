@@ -2,47 +2,74 @@ import 'package:flutter/material.dart';
 import 'package:spotify_like/core/configs/theme/app_Color.dart';
 
 class AppTheme {
-  static final light = ThemeData(
+  static final lightTheme = ThemeData(
+    primaryColor: AppColor.primary,
+    scaffoldBackgroundColor: AppColor.lightBackground,
     brightness: Brightness.light,
-    fontFamily: "Satoshi",
-    primaryColor: Color(0xff42C83C),
-    scaffoldBackgroundColor: Color(0xffF2F2F2),
+    fontFamily: 'Satoshi',
+    sliderTheme: SliderThemeData(overlayShape: SliderComponentShape.noOverlay),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: Colors.transparent,
+      contentPadding: const EdgeInsets.all(30),
+      hintStyle: const TextStyle(
+        color: Color(0xff383838),
+        fontWeight: FontWeight.w500,
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30),
+        borderSide: const BorderSide(color: Colors.white, width: 0.4),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30),
+        borderSide: const BorderSide(color: Colors.black, width: 0.4),
+      ),
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColor.primary,
-        foregroundColor: Colors.white,
-        textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
-        ),
+        elevation: 0,
+        textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       ),
-    ),
-
-    colorScheme: ColorScheme.light(
-      primary: Color(0xff42C83C),
-      secondary: Color(0xffBEBEBE),
     ),
   );
 
-  static final dark = ThemeData(
+  static final darkTheme = ThemeData(
+    primaryColor: AppColor.primary,
+    scaffoldBackgroundColor: AppColor.darkBackground,
     brightness: Brightness.dark,
-    fontFamily: "Satoshi",
-    primaryColor: Color(0xff42C83C),
-    scaffoldBackgroundColor: Color(0xff0D0C0C),
+    fontFamily: 'Satoshi',
+    sliderTheme: SliderThemeData(
+      overlayShape: SliderComponentShape.noOverlay,
+      activeTrackColor: Color(0xffB7B7B7),
+      inactiveTrackColor: Colors.grey.withOpacity(0.3),
+      thumbColor: Color(0xffB7B7B7),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: Colors.transparent,
+      hintStyle: const TextStyle(
+        color: Color(0xffA7A7A7),
+        fontWeight: FontWeight.w500,
+      ),
+      contentPadding: const EdgeInsets.all(30),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30),
+        borderSide: const BorderSide(color: Colors.white, width: 0.4),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30),
+        borderSide: const BorderSide(color: Colors.white, width: 0.4),
+      ),
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColor.primary,
-        foregroundColor: Colors.white,
-        textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
-        ),
+        elevation: 0,
+        textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       ),
-    ),
-
-    colorScheme: ColorScheme.dark(
-      primary: Color(0xff42C83C),
-      secondary: Color(0xffBEBEBE),
     ),
   );
 }

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spotify_like/common/WIDGET/button/basicAppButton.dart';
+import 'package:spotify_like/common/hleper/is_dark_mode.dart';
 import 'package:spotify_like/core/configs/theme/app_Color.dart';
 import 'package:spotify_like/core/configs/theme/asset/app_png.dart';
 import 'package:spotify_like/presentation/chose_mode/bloc/cubit/get_started_cubit.dart';
 import 'package:spotify_like/presentation/chose_mode/widgets/mode_button.dart';
-import 'package:spotify_like/presentation/get_started/pages/get_started.dart';
+import 'package:spotify_like/presentation/auth/pages/regster_page.dart';
 
 class ChooseMode extends StatelessWidget {
   const ChooseMode({super.key});
@@ -15,9 +17,9 @@ class ChooseMode extends StatelessWidget {
     final themeMode = context.watch<GetStartedCubit>().state;
 
     return Scaffold(
-      backgroundColor: State == ThemeMode.light
-          ? AppColor.lightBackground
-          : AppColor.darkBackground,
+      backgroundColor: context.isDarkModeEnabled
+          ? AppColor.darkBackground
+          : AppColor.lightBackground,
 
       body: Stack(
         fit: StackFit.expand,
@@ -27,26 +29,25 @@ class ChooseMode extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Image.asset(AppPng.logo, width: 196, height: 59),
+                Image.asset(AppPng.logo, width: 196.w, height: 59.h),
                 const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 60,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 24.w,
+                    vertical: 60.h,
                   ),
                   child: Column(
                     children: [
-                      const Text(
+                      Text(
                         "Choose Mode",
                         style: TextStyle(
-                          fontSize: 25,
+                          fontSize: 25.sp,
                           fontWeight: FontWeight.w800,
                           color: Colors.white,
                           fontFamily: "Satoshi",
                         ),
                       ),
-                      const SizedBox(height: 20),
-
+                      SizedBox(height: 20.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -66,10 +67,10 @@ class ChooseMode extends StatelessWidget {
                             iconColor: Colors.white,
                             textColor: Colors.white,
                             fontFamily: "Satoshi",
-                            fontSize: 17,
+                            fontSize: 17.sp,
                             fontWeight: FontWeight.w600,
                           ),
-                          const SizedBox(width: 50),
+                          SizedBox(width: 50.w),
                           ModeButton(
                             icon: Icons.dark_mode,
                             label: "Dark",
@@ -86,23 +87,22 @@ class ChooseMode extends StatelessWidget {
                             iconColor: Colors.white,
                             textColor: AppColor.lightBackground,
                             fontFamily: "Satoshi",
-                            fontSize: 17,
+                            fontSize: 17.sp,
                             fontWeight: FontWeight.w500,
                           ),
                         ],
                       ),
-
-                      const SizedBox(height: 50),
+                      SizedBox(height: 50.h),
                       Basicappbutton(
                         btnText: "Continue",
                         btnFontFamily: "Satoshi",
                         btnFontWeight: FontWeight.w700,
-                        btnFontSize: 22,
+                        btnFontSize: 22.sp,
                         onPressed: () {
-                          Navigator.pushReplacement(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => const GetStarted(),
+                              builder: (_) => const RegsterPage(),
                             ),
                           );
                         },
